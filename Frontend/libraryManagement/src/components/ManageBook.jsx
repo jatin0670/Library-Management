@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
-// add local host 8080 to run locally
+// add this - http://localhost:8080   to run locally
 
 const ManageBook = () => {  
 
