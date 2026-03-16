@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <div className=' fixed top-0 left-0 w-full h-16 bg-[#294666] flex justify-between items-center px-10'>
+    <div className=' z-20 fixed top-0 left-0 w-full h-16 bg-[#294666] flex justify-between items-center px-10'>
         <div className=' text-white text-2xl font-bold'>LibraryManagement</div>
         <div className=' text-white font-medium text-[15px] flex gap-10 items-center'>
             <Link to="/" className=' cursor-pointer'>Dashboard</Link>
