@@ -4,6 +4,8 @@ import img from '../assets/bgimg.jpg'
 import axios from 'axios'
 
 
+// add local host 8080 to run locally 
+
 const Home = () => {
 
   const [bookNo, setBookNo] = useState(0)
@@ -11,7 +13,7 @@ const Home = () => {
   const [issueBookNo, setIssueBookNo] = useState(0)
 
   useEffect(()=>{
-    axios.get("http://localhost:8080/allbooks")
+    axios.get("https://library-management-7mb5.onrender.com/allbooks")
     .then((response)=>{
        setBookNo(response.data.length)
        console.log(response.data.length);
@@ -20,7 +22,7 @@ const Home = () => {
  }, [])
 
  useEffect(()=>{
-  axios.get("http://localhost:8080/allstudents")
+  axios.get("https://library-management-7mb5.onrender.com/allstudents")
   .then((response)=>{
      setStudentNo(response.data.length)
      console.log(response.data.length);
@@ -29,7 +31,7 @@ const Home = () => {
 }, [])
 
 useEffect(()=>{
-  axios.get("http://localhost:8080/allissuebooks")
+  axios.get("https://library-management-7mb5.onrender.com/allissuebooks")
   .then((response)=>{
      setIssueBookNo(response.data.length)
      console.log(response.data.length);

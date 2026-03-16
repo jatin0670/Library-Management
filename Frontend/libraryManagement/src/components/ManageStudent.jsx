@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
+// add local host 8080 to run locally
+
 const ManageStudent = () => {
 
    const [student, setStudent] = useState([]);
@@ -18,14 +20,14 @@ const ManageStudent = () => {
    }
 
    const handleSubmit = (e)=>{
-       axios.post("http://localhost:8080/student", form)
+       axios.post("https://library-management-7mb5.onrender.com/student", form)
        .then(response);
        setStudent([...student, response.data]);
    }
 
    const deleteStudent = (id)=>{
     if(window.confirm("Are you sure you want to delete this record?")){
-      axios.delete(`http://localhost:8080/student/${id}`)
+      axios.delete(`https://library-management-7mb5.onrender.com/student/${id}`)
       .then(()=>{
         setStudent(student.filter((e)=>e.id !== id))
       })
@@ -33,7 +35,7 @@ const ManageStudent = () => {
    }
   
    useEffect(()=>{
-     axios.get("http://localhost:8080/allstudents")
+     axios.get("https://library-management-7mb5.onrender.com/allstudents")
      .then((response)=>{
          setStudent(response.data);
          console.log(response.data)
