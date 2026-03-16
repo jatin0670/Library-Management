@@ -20,14 +20,14 @@ const ManageStudent = () => {
    }
 
    const handleSubmit = (e)=>{
-       axios.post("https://library-management-7mb5.onrender.com/student", form)
+       axios.post("http://localhost:8080/student", form)
        .then(response);
        setStudent([...student, response.data]);
    }
 
    const deleteStudent = (id)=>{
     if(window.confirm("Are you sure you want to delete this record?")){
-      axios.delete(`https://library-management-7mb5.onrender.com/student/${id}`)
+      axios.delete(`http://localhost:8080/student/${id}`)
       .then(()=>{
         setStudent(student.filter((e)=>e.id !== id))
       })
@@ -35,7 +35,7 @@ const ManageStudent = () => {
    }
   
    useEffect(()=>{
-     axios.get("https://library-management-7mb5.onrender.com/allstudents")
+     axios.get("http://localhost:8080/allstudents")
      .then((response)=>{
          setStudent(response.data);
          console.log(response.data)

@@ -21,7 +21,7 @@ const ManageBook = () => {
 
   const handleSubmit = (e)=>{
     // e.preventDefault()
-     axios.post("https://library-management-7mb5.onrender.com/book", form)
+     axios.post("http://localhost:8080/book", form)
      .then((response)=>{
         setBook([...book, response.data])
      })
@@ -29,7 +29,7 @@ const ManageBook = () => {
 
   const deleteBook = (id)=>{
     if(window.confirm("Are you sure you want to delete this record?")){
-      axios.delete(`https://library-management-7mb5.onrender.com/book/${id}`)
+      axios.delete(`http://localhost:8080/book/${id}`)
       .then(() =>{
         setBook(book.filter((e)=> e.id !== id))
       })
@@ -37,7 +37,7 @@ const ManageBook = () => {
   }
 
   useEffect(()=>{                                    //data retrieve when page loaded
-     axios.get("https://library-management-7mb5.onrender.com/allbooks")
+     axios.get("http://localhost:8080/allbooks")
      .then((response)=>{
          setBook(response.data);
          console.log(response.data);
