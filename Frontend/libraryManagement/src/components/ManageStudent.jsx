@@ -17,9 +17,13 @@ const ManageStudent = () => {
 
    const handleChange = (e)=>{
        setForm({...form, [e.target.name] : e.target.value})
-   }
+    }
 
    const handleSubmit = (e)=>{
+    if(form.name === "" || form.email === "" || form.roll === "" || form.course === ""){
+      window.alert("fill all the fields!")
+      return;
+    }
        axios.post("http://localhost:8080/student", form)
        .then(response);
        setStudent([...student, response.data]);

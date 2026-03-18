@@ -23,6 +23,12 @@ const IssueBook = () => {
   }
 
   const handleSubmit = (e)=>{
+
+    if(form.name === "" || form.book === "" || form.issueDate === "" || form.returnDate === ""){
+      window.alert("fill all the fields!")
+      return;
+    }
+
       axios.post("http://localhost:8080/issuebook", form)
       .then((response)=>{
         setIssueBook([...issueBook, response.data])

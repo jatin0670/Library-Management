@@ -20,6 +20,11 @@ const ManageBook = () => {
   }
 
   const handleSubmit = (e)=>{
+
+    if(form.title === "" || form.author === "" || form.qty === "" || form.available=== ""){
+      window.alert("fill all the fields!")
+      return;
+    }
     // e.preventDefault()
      axios.post("http://localhost:8080/book", form)
      .then((response)=>{
