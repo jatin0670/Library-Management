@@ -11,6 +11,8 @@ const IssueBook = () => {
 
   const [book, setBook] = useState([])
 
+  const [load, setLoad] = useState(false)
+
   const [form, setForm] = useState({
     name: "",
     book: "",
@@ -23,15 +25,21 @@ const IssueBook = () => {
   }
 
   const handleSubmit = (e)=>{
+    
+    e.preventDefault()
 
     if(form.name === "" || form.book === "" || form.issueDate === "" || form.returnDate === ""){
       window.alert("fill all the fields!")
       return;
     }
 
+    setLoad(true)
+
       axios.post("http://localhost:8080/issuebook", form)
       .then((response)=>{
         setIssueBook([...issueBook, response.data])
+        setLoad(false)
+        setForm({name: "", book: "", issueDate: "", returnDate: ""})
 
       })
   }
@@ -108,13 +116,13 @@ const IssueBook = () => {
              <input onChange={handleChange} name="returnDate" value={form.returnDate} type="date" />
             </div>
           
-            <button className=' py-2 px-4 bg-[#294666] text-white font-bold rounded-md hover:scale-95 cursor-pointer shadow-sm shadow-black' type="submit">Issue Book</button>
+            <button className=' py-2 px-4 bg-[#294666] text-white font-bold rounded-md hover:scale-95 cursor-pointer shadow-sm shadow-black' type="submit">{load ? "Adding..." : "Issue Book"}</button>
          </form>
    
        </div> 
 
 
-       <div className=' pt-16 bg-gray-800 h-screen w-full flex flex-col items-center gap-10'>
+       <div className=' pt-16 pb-16 bg-gray-800 h-full w-full flex flex-col items-center gap-10'>
         <h1 className='p-3 text-4xl text-white font-bold flex items-center justify-center '>Records</h1>
         <table className='w-3/4 text-white border-collapse'>
         <thead>

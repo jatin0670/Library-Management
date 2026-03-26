@@ -7,6 +7,8 @@ const ManageBook = () => {
 
   const [book, setBook] = useState([])
 
+  const [load, setLoad] = useState(false)
+
   const [form, setForm] = useState({
     title: "",
     author: "",
@@ -21,14 +23,20 @@ const ManageBook = () => {
 
   const handleSubmit = (e)=>{
 
+    e.preventDefault()
+
     if(form.title === "" || form.author === "" || form.qty === "" || form.available=== ""){
       window.alert("fill all the fields!")
       return;
     }
     // e.preventDefault()
+
+    setLoad(true)
      axios.post("http://localhost:8080/book", form)
      .then((response)=>{
         setBook([...book, response.data])
+        setLoad(false)
+        setForm({title: "", author: "", qty: "", available: ""})
      })
   }
 
@@ -78,12 +86,12 @@ const ManageBook = () => {
           <input name='available' value={form.available} onChange={handleChange} className='px-3 py-2 text-black outline-gray-600 outline rounded-lg' type="number" />
         </div>
 
-        <button type='submit' className=' py-2 px-4 bg-[#294666] text-white font-bold rounded-md hover:scale-95 cursor-pointer shadow-sm shadow-black'>Add Book</button>
+        <button type='submit' className=' py-2 px-4 bg-[#294666] text-white font-bold rounded-md hover:scale-95 cursor-pointer shadow-sm shadow-black'>{load ? "Adding..." : "Add Book"}</button>
       </form>
     </div>
 
 
-    <div className=' pt-16 bg-gray-800 h-screen w-full flex flex-col items-center gap-10'>
+    <div className=' pt-16 pb-16 bg-gray-800 h-full w-full flex flex-col items-center gap-10'>
         <h1 className='p-3 text-4xl text-white font-bold flex items-center justify-center '>Records</h1>
         <table className='w-3/4 text-white border-collapse'>
         <thead>

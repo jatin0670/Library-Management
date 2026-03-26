@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 const ManageStudent = () => {
 
    const [student, setStudent] = useState([]);
+   const [load, setLoad] = useState(false)
 
    const [form, setForm] = useState({
         name: "",
@@ -20,13 +21,23 @@ const ManageStudent = () => {
     }
 
    const handleSubmit = (e)=>{
+
+    e.preventDefault()
+
     if(form.name === "" || form.email === "" || form.roll === "" || form.course === ""){
       window.alert("fill all the fields!")
       return;
     }
+
+    setLoad(true)
+
        axios.post("http://localhost:8080/student", form)
-       .then(response);
-       setStudent([...student, response.data]);
+       .then((response)=>{
+           setStudent([...student, response.data]);
+           setLoad(false)
+           setForm({name: "", email: "", roll: "", course: ""})
+       });
+       
    }
 
    const deleteStudent = (id)=>{
@@ -69,11 +80,11 @@ const ManageStudent = () => {
             <option value="BSC">BSC</option>
             
           </select>
-          <button className=' py-2 px-4 bg-[#294666] text-white font-bold rounded-md hover:scale-95 cursor-pointer shadow-sm shadow-black' type="submit">Add Student</button>
+          <button className=' py-2 px-4 bg-[#294666] text-white font-bold rounded-md hover:scale-95 cursor-pointer shadow-sm shadow-black' type="submit">{load ? "Adding..." : "Add Student"}</button>
       </form>
     </div>
 
-    <div className=' pt-16 bg-gray-800 h-screen w-full flex flex-col items-center gap-10' >
+    <div className=' pt-16 pb-16 bg-gray-800 h-full w-full flex flex-col items-center gap-10' >
     <h1 className='p-3 text-4xl text-white font-bold flex items-center justify-center '>Records</h1>
 
     <table className='w-3/4 text-white border-collapse'>
