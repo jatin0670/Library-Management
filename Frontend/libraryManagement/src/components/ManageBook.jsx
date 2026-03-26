@@ -61,7 +61,7 @@ const ManageBook = () => {
     
     <div>
 
-      <div className=' pt-16 bg-[#F2FAFF] h-screen w-full flex flex-col items-center gap-10'>
+      <div className=' pt-20 bg-[#F2FAFF] h-screen w-full flex flex-col items-center gap-8'>
       <h1 className='p-3 text-4xl text-[#294666] font-bold flex items-center justify-center '>Manage Books </h1>
 
       <form onSubmit={handleSubmit} className='py-2 h-3/4 w-2/5 bg-white flex flex-col items-center justify-around rounded-md 
