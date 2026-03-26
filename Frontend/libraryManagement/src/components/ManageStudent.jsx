@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import Navbar from './Navbar';
 
 // add local host 8080 to run locally
 
@@ -58,31 +59,48 @@ const ManageStudent = () => {
    }, [])
 
   return (
-  <div>
+  <div>  {/* whole page */}
 
-    <div className=' pt-20 bg-[#F2FAFF] h-screen w-full flex flex-col items-center gap-8'>
-      <h1 className='p-3 text-4xl text-[#294666] font-bold flex items-center justify-center '>Manage Students </h1>
+    <div className='h-screen w-full flex flex-col'>   {/*page 1 */}
 
-      <form onSubmit={handleSubmit} className='py-2 h-3/4 w-2/5 bg-white flex flex-col items-center justify-around rounded-md
-       shadow-sm shadow-black'>
-          <input name='name' value={form.name} onChange={handleChange} className='  w-2/3 py-3 px-3 text-black outline outline-gray-400 rounded-md' type="text" placeholder="Student Name" />
-          <input name='email' value={form.email} onChange={handleChange} className='  w-2/3 py-3 px-3 text-black outline outline-gray-400 rounded-md' type="email" placeholder="Email" />
+        <div className='z-20 w-full h-16 top-0 left-0 bg-[#3666ad] flex items-center px-10  '>{/* top nav */}
+             <h2 className=' text-white text-3xl font-bold'>Library Management</h2>
+        </div>
 
-          {/* <input className='  w-2/3 py-3 px-3 text-black outline outline-gray-400 rounded-md' type="text" placeholder="Course" /> */}
-          
-          <input name='roll' value={form.roll} onChange={handleChange} className='  w-2/3 py-3 px-3 text-black outline outline-gray-400 rounded-md' type="number" placeholder="Roll Number" />
+      <div className=' h-full w-full flex'>  {/* bottom section */}
 
-          <select name="course" value={form.course} onChange={handleChange} id="">
-            <option value="">Select Cours</option>
-            <option value="BCA">BCA</option>
-            <option value="BBA">BBA</option>
-            <option value="BA">BA</option>
-            <option value="BSC">BSC</option>
-            
-          </select>
-          <button className=' py-2 px-4 bg-[#294666] text-white font-bold rounded-md hover:scale-95 cursor-pointer shadow-sm shadow-black' type="submit">{load ? "Adding..." : "Add Student"}</button>
-      </form>
+        <Navbar/>
+  
+        <div className=' bg-[#F2FAFF] w-5/6 full flex flex-col items-center pt-8 gap-4 '>
+          <h1 className='p-3 text-4xl text-[#2f384a] font-bold flex items-center justify-center '>Manage Students </h1>
+      
+          <form onSubmit={handleSubmit} className='py-2 h-3/4 w-2/5 bg-white flex flex-col items-center justify-around rounded-md
+           shadow-sm shadow-black'>
+              <input name='name' value={form.name} onChange={handleChange} className='  w-2/3 py-3 px-3 text-black outline outline-gray-400 rounded-md' type="text" placeholder="Student Name" />
+              <input name='email' value={form.email} onChange={handleChange} className='  w-2/3 py-3 px-3 text-black outline outline-gray-400 rounded-md' type="email" placeholder="Email" />
+      
+              {/* <input className='  w-2/3 py-3 px-3 text-black outline outline-gray-400 rounded-md' type="text" placeholder="Course" /> */}
+              
+              <input name='roll' value={form.roll} onChange={handleChange} className='  w-2/3 py-3 px-3 text-black outline outline-gray-400 rounded-md' type="number" placeholder="Roll Number" />
+      
+              <select name="course" value={form.course} onChange={handleChange} id="">
+                <option value="">Select Cours</option>
+                <option value="BCA">BCA</option>
+                <option value="BBA">BBA</option>
+                <option value="BA">BA</option>
+                <option value="BSC">BSC</option>
+                
+              </select>
+              <button className=' py-2 px-4 bg-[#294666] text-white font-bold rounded-md hover:scale-95 cursor-pointer shadow-sm shadow-black' type="submit">{load ? "Adding..." : "Add Student"}</button>
+          </form>
+        </div>
+
+      </div>
+       
+
     </div>
+
+    
 
     <div className=' pt-16 pb-16 bg-gray-800 h-full w-full flex flex-col items-center gap-10' >
     <h1 className='p-3 text-4xl text-white font-bold flex items-center justify-center '>Records</h1>

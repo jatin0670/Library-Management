@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import Navbar from './Navbar'
+import TopNav from './TopNav'
 
 // add this - http://localhost:8080   to run locally
 
@@ -61,34 +63,53 @@ const ManageBook = () => {
     
     <div>
 
-      <div className=' pt-20 bg-[#F2FAFF] h-screen w-full flex flex-col items-center gap-8'>
-      <h1 className='p-3 text-4xl text-[#294666] font-bold flex items-center justify-center '>Manage Books </h1>
+     <div className='h-screen w-full flex flex-col'>
 
-      <form onSubmit={handleSubmit} className='py-2 h-3/4 w-2/5 bg-white flex flex-col items-center justify-around rounded-md 
-      shadow-sm shadow-black' action="">
-        <div className=' w-4/5 flex flex-col gap-2'>
-          <label className=' text-gray-600 text-2xl font-medium' htmlFor="">Title</label>
-          <input name='title' value={form.title} onChange={handleChange} className='px-3 py-2 text-black outline-gray-600 outline rounded-lg' type="text" />
+        <div className='z-20 w-full h-16 top-0 left-0 bg-[#3666ad] flex items-center px-10  '>
+             <h2 className=' text-white text-3xl font-bold'>Library Management</h2>
         </div>
+    
+       <div className=' h-full w-full flex ' >
 
-        <div className='w-4/5  flex flex-col gap-2'>
-          <label className=' text-gray-600 text-2xl font-medium' htmlFor="">Author</label>
-          <input name='author' value={form.author} onChange={handleChange} className='px-3 py-2 text-black outline-gray-600 outline rounded-lg' type="text" />
+        <Navbar/>
+
+        <div className=' bg-[#F2FAFF] h-full w-5/6 flex flex-col items-center pt-8 gap-4'>
+        
+         <h1 className='p-3 text-4xl text-[#2f384a] font-bold flex items-center justify-center '>Manage Books </h1>
+         
+         <form onSubmit={handleSubmit} className='py-2 h-3/4 w-2/5 bg-white flex flex-col items-center justify-around rounded-md 
+         shadow-sm shadow-black' action="">
+           <div className=' w-4/5 flex flex-col gap-2'>
+             <label className=' text-gray-600 text-2xl font-medium' htmlFor="">Title</label>
+             <input name='title' value={form.title} onChange={handleChange} className='px-3 py-2 text-black outline-gray-600 outline rounded-lg' type="text" />
+           </div>
+         
+           <div className='w-4/5  flex flex-col gap-2'>
+             <label className=' text-gray-600 text-2xl font-medium' htmlFor="">Author</label>
+             <input name='author' value={form.author} onChange={handleChange} className='px-3 py-2 text-black outline-gray-600 outline rounded-lg' type="text" />
+           </div>
+         
+           <div className=' w-4/5 flex flex-col gap-2'>
+             <label className=' text-gray-600 text-2xl font-medium' htmlFor="">Qty</label>
+             <input name='qty' value={form.qty} onChange={handleChange} className='px-3 py-2 text-black outline-gray-600 outline rounded-lg' type="number" />
+           </div>
+         
+           <div className=' w-4/5 flex flex-col gap-2'>
+             <label className=' text-gray-600 text-2xl font-medium' htmlFor="">Available</label>
+             <input name='available' value={form.available} onChange={handleChange} className='px-3 py-2 text-black outline-gray-600 outline rounded-lg' type="number" />
+           </div>
+         
+           <button type='submit' className=' py-2 px-4 bg-[#294666] text-white font-bold rounded-md hover:scale-95 cursor-pointer shadow-sm shadow-black'>{load ? "Adding..." : "Add Book"}</button>
+         </form>
         </div>
+       </div>
 
-        <div className=' w-4/5 flex flex-col gap-2'>
-          <label className=' text-gray-600 text-2xl font-medium' htmlFor="">Qty</label>
-          <input name='qty' value={form.qty} onChange={handleChange} className='px-3 py-2 text-black outline-gray-600 outline rounded-lg' type="number" />
-        </div>
 
-        <div className=' w-4/5 flex flex-col gap-2'>
-          <label className=' text-gray-600 text-2xl font-medium' htmlFor="">Available</label>
-          <input name='available' value={form.available} onChange={handleChange} className='px-3 py-2 text-black outline-gray-600 outline rounded-lg' type="number" />
-        </div>
+       
 
-        <button type='submit' className=' py-2 px-4 bg-[#294666] text-white font-bold rounded-md hover:scale-95 cursor-pointer shadow-sm shadow-black'>{load ? "Adding..." : "Add Book"}</button>
-      </form>
-    </div>
+     </div>
+
+      
 
 
     <div className=' pt-16 pb-16 bg-gray-800 h-full w-full flex flex-col items-center gap-10'>

@@ -7,15 +7,17 @@ import Navbar from './components/Navbar';
 import ManageStudent from './components/ManageStudent';
 import ReturnBook from './components/ReturnBook';
 import Fines from './components/Fines';
+import TopNav from './components/TopNav';
+
 
 
 
 
 const router = createBrowserRouter([
-  {path: "/", element: <div><Navbar/> <Home/></div>},
-  {path: "/issuebooks", element: <div><Navbar/> <IssueBook/></div>},
-  {path: "/managebooks", element: <div><Navbar/> <ManageBook/></div> },
-  {path: "/managestudents", element: <div><Navbar/> <ManageStudent/></div> },
+  {path: "/", element: <div> <Home/></div>},
+  {path: "/issuebooks", element: <div><IssueBook/></div>},
+  {path: "/managebooks", element: <div> <ManageBook/></div> },
+  {path: "/managestudents", element: <div> <ManageStudent/></div> },
   // {path: "/returnbooks", element: <div><Navbar/> <ReturnBook/></div>},
   // {path: "/fines", element: <div><Navbar/> <Fines/></div> }
 ])
