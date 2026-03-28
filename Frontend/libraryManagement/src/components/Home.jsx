@@ -3,6 +3,7 @@ import Card from './Card'
 import img from '../assets/bgimg.jpg'
 import axios from 'axios'
 import Navbar from './Navbar'
+import { RiDashboardFill, RiBookFill, RiUserFill, RiBookmarkFill, RiBookOpenFill} from "@remixicon/react";
 
 
 // add local host 8080 to run locally 
@@ -46,20 +47,33 @@ useEffect(()=>{
 
       <div className='h-screen w-full flex flex-col'>
 
-        <div className='z-20 w-full h-16 top-0 left-0 bg-[#3666ad] flex items-center px-10  '>
+        <div className='z-20 w-full h-16 top-0 left-0 bg-[#3666ad] flex items-center justify-between px-10  '>
+            <div className='flex gap-4 items-center justify-cente'>
+            <RiBookOpenFill color='white' size={36} />
             <h2 className=' text-white text-3xl font-bold'>Library Management</h2>
+            </div>
+
+            <div className=' flex gap-2 items-center justify-cente'>
+              <span className=' w-12 h-12 rounded-full'>
+                <img className='h-full w-full object-fit ' src="https://www.selectmarket.ae/wp-content/uploads/2016/05/5ed0bc59411f1356d4fdf40b_dummy-person.png" alt="" />
+              </span>
+              <h2 className='text-white'>Admin</h2>
+            </div>
         </div>
 
-        <div className='flex w-full h-full '>
+        <div className='flex w-full h-full'>
 
           <Navbar/>
 
-          <div className=' h-full w-5/6 flex items-center justify-center gap-28 relative'>
-            <img className=' absolute h-full w-full' src={img} alt="" />
-        
-            <Card No={bookNo} text="Total Books"/>
-            <Card No={studentNo} text="Total students"/>
-            <Card No={issueBookNo} text="Total Issue Books"/>
+          <div className=' h-full w-5/6 flex flex-col items-center gap-4 pt-8 relative bg-[#F2FAFF]'>
+            {/* <img className=' absolute h-full w-full' src={img} alt="" /> */}
+             
+            <h1 className='p-3 text-4xl text-[#2f384a] font-bold flex items-center justify-center z-10 '>Dashboard</h1>
+            <div className=' z-10 flex gap-28' >
+            <Card No={bookNo} text="Total Books" icon={<RiBookFill/>}/>
+            <Card No={studentNo} text="Total students" icon={<RiUserFill/>}/>
+            <Card No={issueBookNo} text="Total Issue Books" icon={<RiBookmarkFill/>}/>
+            </div>
             {/* <Card No="0" text="Total Fine Received"/> */}
           
           </div>

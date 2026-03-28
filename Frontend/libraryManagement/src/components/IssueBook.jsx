@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar';
+import { RiBookOpenFill} from "@remixicon/react";
 
 // add local host 8080 to run locally
 
@@ -83,8 +84,19 @@ const IssueBook = () => {
 
   <div className='h-screen w-full flex flex-col'>
 
-    <div className='z-20 w-full h-16 top-0 left-0 bg-[#3666ad] flex items-center px-10  '>
-         <h2 className=' text-white text-3xl font-bold'>Library Management</h2>
+    <div className='z-20 w-full h-16 top-0 left-0 bg-[#3666ad] flex items-center justify-between px-10  '>
+    
+      <div className='flex gap-4 items-center justify-cente'>
+          <RiBookOpenFill color='white' size={36} />
+          <h2 className=' text-white text-3xl font-bold'>Library Management</h2>
+      </div>
+      <div className=' flex gap-2 items-center justify-cente'>
+            <span className=' w-12 h-12 rounded-full'>
+              <img className='h-full w-full object-fit ' src="https://www.selectmarket.ae/wp-content/uploads/2016/05/5ed0bc59411f1356d4fdf40b_dummy-person.png" alt="" />
+            </span>
+            <h2 className='text-white'>Admin</h2>
+      </div>
+
     </div>
 
     <div className='h-full w-full flex'>
