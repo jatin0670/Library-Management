@@ -65,10 +65,10 @@ useEffect(()=>{
 
           <Navbar/>
 
-          <div className=' h-full w-5/6 flex flex-col items-center gap-4 pt-8 relative bg-[#F2FAFF]'>
-            {/* <img className=' absolute h-full w-full' src={img} alt="" /> */}
+          <div className=' h-full w-5/6 flex flex-col items-center gap-4 relative bg-[#F2FAFF]'>
+            <img className=' absolute h-full w-full' src={img} alt="" />
              
-            <h1 className='p-3 text-4xl text-[#2f384a] font-bold flex items-center justify-center z-10 '>Dashboard</h1>
+            <h1 className='p-3 text-4xl text-[#2f384a] font-bold flex items-center justify-center mt-8 z-10 '>Dashboard</h1>
             <div className=' z-10 flex gap-28' >
             <Card No={bookNo} text="Total Books" icon={<RiBookFill/>}/>
             <Card No={studentNo} text="Total students" icon={<RiUserFill/>}/>
