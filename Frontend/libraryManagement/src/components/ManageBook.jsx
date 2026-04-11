@@ -2,7 +2,8 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import TopNav from './TopNav'
-import { RiBookOpenFill} from "@remixicon/react";
+import { RiBookOpenFill, RiSearchLine } from "@remixicon/react";
+// import data from './data.json'
 
 // add this - http://localhost:8080   to run locally
 
@@ -11,6 +12,9 @@ const ManageBook = () => {
   const [book, setBook] = useState([])
 
   const [load, setLoad] = useState(false)
+
+  const [search, setSearch] = useState("")
+
 
   const [form, setForm] = useState({
     title: "",
@@ -125,9 +129,15 @@ const ManageBook = () => {
       
 
 
-    <div className=' pt-16 pb-16 bg-gray-800 h-full w-full flex flex-col items-center gap-10'>
+    <div className=' pt-16 pb-16 bg-gray-800 h-full w-full flex flex-col items-center gap-8'>
         <h1 className='p-3 text-4xl text-white font-bold flex items-center justify-center '>Records</h1>
-        <table className='w-3/4 text-white border-collapse'>
+
+        <div className=' w-1/4 rounded-3xl bg-white flex items-center justify-center px-4 overflow-hidden'>
+        <input onChange={(e)=>{setSearch(e.target.value)}} className=' py-3 w-full h-full outline-none bg-white' type="text" placeholder='Search Books' />
+        {/* <span><RiSearchLine color='grey' className=' cursor-pointer' /></span> */}
+        </div>
+
+        <table className='w-3/4  text-white border-collapse'>
         <thead>
             <tr className='bg-[#294666]'>
                 <th className='p-3 border border-gray-500'>ID</th>
@@ -139,7 +149,9 @@ const ManageBook = () => {
             </tr>
         </thead>
         <tbody>
-            {book.map((e) => (
+            {book.filter((e)=>{
+              return search.toLowerCase() === "" ? e : e.title.toLowerCase().includes(search)
+            }).map((e) => (
                 <tr key={e.id} className='text-center'>
                     <td className='p-3 border border-gray-500'>{e.id}</td>
                     <td className='p-3 border border-gray-500'>{e.title}</td>

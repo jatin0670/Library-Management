@@ -7,6 +7,8 @@ import {RiBookOpenFill} from "@remixicon/react";
 
 const ManageStudent = () => {
 
+  const [search, setSearch] = useState("")
+
    const [student, setStudent] = useState([]);
    const [load, setLoad] = useState(false)
 
@@ -115,8 +117,13 @@ const ManageStudent = () => {
 
     
 
-    <div className=' pt-16 pb-16 bg-gray-800 h-full w-full flex flex-col items-center gap-10' >
+    <div className=' pt-16 pb-16 bg-gray-800 h-full w-full flex flex-col items-center gap-8' >
     <h1 className='p-3 text-4xl text-white font-bold flex items-center justify-center '>Records</h1>
+
+    <div className=' w-1/4 rounded-3xl bg-white flex items-center justify-center px-4 overflow-hidden'>
+        <input onChange={(e)=>{setSearch(e.target.value)}} className=' py-3 w-full h-full outline-none bg-white' type="text" placeholder='Search Books' />
+        {/* <span><RiSearchLine color='grey' className=' cursor-pointer' /></span> */}
+    </div>
 
     <table className='w-3/4 text-white border-collapse'>
         <thead>
