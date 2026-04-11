@@ -4,6 +4,9 @@ import img from '../assets/bgimg.jpg'
 import axios from 'axios'
 import Navbar from './Navbar'
 import { RiDashboardFill, RiBookFill, RiUserFill, RiBookmarkFill, RiBookOpenFill} from "@remixicon/react";
+import {Chart as ChartJS} from 'chart.js/auto';
+import { Line, Bar, Pie, Doughnut } from 'react-chartjs-2';
+
 
 
 // add local host 8080 to run locally 
@@ -75,6 +78,30 @@ useEffect(()=>{
             <Card No={issueBookNo} text="Total Issue Books" icon={<RiBookmarkFill/>}/>
             </div>
             {/* <Card No="0" text="Total Fine Received"/> */}
+
+            <div className=' bg-[#F2FAFF] p-5 h-72 w-2/5 z-10 mt-7 shadow-lg shadow-black'>
+                 <Bar
+                   data={{
+                      labels: ["Books", "Students", "Issued Books"],
+                      datasets: [{
+                        label: "Data",
+                        data: [bookNo, studentNo ,issueBookNo],
+                        backgroundColor: [
+                          'rgba(255, 99, 132, 0.5)',
+                          'rgba(255, 159, 64, 0.5)',
+                          'rgba(153, 102, 255, 0.5)'
+                        ],
+                        borderColor: [
+                          'rgb(255, 99, 132)',
+                          'rgb(255, 159, 64)',
+                          'rgb(153, 102, 255)'
+                        ],
+                        borderWidth: 1,
+                        borderRadius: 5,
+                      }],
+                   }}
+                  />
+            </div>
           
           </div>
         </div>
